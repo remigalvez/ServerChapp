@@ -4,7 +4,11 @@ var app = express();
 app.set('port', (process.env.PORT || 3000));
 
 app.get('/', function(request, response) {
-  response.send("Hello, World!");
+	var user = {
+		name:"Remi Galvez",
+		gender:"Male"
+	}
+  response.send(user);
 });
 
 app.listen(app.get('port'), function() {
