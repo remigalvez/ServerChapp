@@ -8,7 +8,7 @@ app.get('/', function(request, response) {
 		name:"Remi Galvez",
 		gender:"Male"
 	}
-  response.end(user);
+  response.send(user);
 });
 
 app.listen(app.get('port'), function() {
