@@ -4,12 +4,9 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function(request, response) {
-	console.log("Request received");
-	var user = {
-		name:"Remi Galvez",
-		gender:"Male"
-	}
-  response.send(user);
+	console.log('Request received');
+  response.send({name: 'Remi'});
+  console.log('Request sent');
 });
 
 app.listen(app.get('port'), function() {
