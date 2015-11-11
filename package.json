@@ -1,26 +1,29 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.1.5",
-  "description": "A sample Node.js app using Express 4",
+  "name": "server-chapp",
+  "version": "1.0.0",
+  "description": "Server code for ChappStick android app (CS 4237)",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
   "dependencies": {
-    "ejs": "2.3.3",
-    "express": "4.13.3"
+    "ejs": "^2.3.3",
+    "express": "^4.13.3"
   },
-  "engines": {
-    "node": "0.12.7"
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "git+https://github.com/remigalvez/ServerChapp.git"
   },
   "keywords": [
     "node",
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "author": "Remi Galvez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/remigalvez/ServerChapp/issues"
+  },
+  "homepage": "https://github.com/remigalvez/ServerChapp#readme"
 }
