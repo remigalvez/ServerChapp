@@ -2,7 +2,7 @@
   "name": "ServerChapp",
   "description": "Server code for ChappStick",
   "repository": "https://github.com/remigalvez/ServerChapp",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "logo": "",
   "keywords": ["node", "express", "static"],
-  "image": "heroku/nodejs"
+  "image": ""
 }
