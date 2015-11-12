@@ -1,5 +1,4 @@
-require('fs');
-
+var fs = require('fs');
 var express = require('express');
 var app = express();
 
@@ -10,7 +9,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/uber', function (req, res) {
-	var img = fs.readFileSync('./res/UberAppIcon');
+	var img = fs.readFileSync('./res/UberAppIcon.png');
   res.writeHead(200, {'Content-Type': 'image/png' });
   res.end(img, 'binary');
 });
