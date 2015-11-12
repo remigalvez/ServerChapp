@@ -1,12 +1,18 @@
+require('fs');
+
 var express = require('express');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/', function(request, response) {
-	console.log('Request received');
-  response.send({name: 'Remi'});
-  console.log('Request sent');
+app.get('/', function (req, res) {
+  res.send({name: 'Remi'});
+});
+
+app.get('/uber', function (req, res) {
+	var img = fs.readFileSync('./res/UberAppIcon');
+  res.writeHead(200, {'Content-Type': 'image/png' });
+  res.end(img, 'binary');
 });
 
 app.listen(app.get('port'), function() {
@@ -14,3 +20,4 @@ app.listen(app.get('port'), function() {
 });
 
 
+// https://myAppID:javascript-key=myJavaScriptKey@api.parse.com/1/classes/GameScore/Ed1nuqPvcm
