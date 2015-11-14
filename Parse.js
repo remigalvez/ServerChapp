@@ -29,37 +29,28 @@ Parse.initialize(APP_ID, JS_KEY, MASTER_KEY);
 //	}
 //});
 
-
-var appTitle;
-exports.getTitle = function (appHandle, callback) {
-	appTitle = '';
-
+exports.getTitle = function (appHandle, res) {
 	var appId = idMap[appHandle];
 	var app = new Parse.Query('App');
 	app.get(appId, {
 		success: function (title) {
-			appTitle = title.get('name');
+			res.send(title.get('name'));
 		},
 		error: function (e) {
-			appTitle = 'Error';
+			res.send('Error...');
 		}
-	}, callback(appTitle));
+	});
 }
 
-var welcomeMessage;
-exports.getWelcomeMessage = function (appHandle, callback) {
-	welcomeMessage = '';
-
+exports.getTitle = function (appHandle, res) {
 	var appId = idMap[appHandle];
 	var app = new Parse.Query('App');
 	app.get(appId, {
 		success: function (title) {
-			welcomeMessage = title.get('name');
+			res.send(title.get('name'));
 		},
 		error: function (e) {
-			welcomeMessage = 'Error';
+			res.send('Error...');
 		}
-	}, callback(welcomeMessage));
+	});
 }
-
-

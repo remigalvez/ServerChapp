@@ -7,26 +7,14 @@ var db = require('./parse.js');
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    res.end({name: 'Remi'});
+    res.send('Remi');
 });
 
 app.get('/:id/name', function (req, res) {
     var appHandle = req.params.id;
-    //res.writeHead(200, {'Content-Type':'application/json'});
-    db.getTitle(appHandle, function (title) {
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        res.end({'title': title});
-    });
-});
-
-app.get('/:id/welcome_message', function (req, res) {
-    var appHandle = req.params.id;
-    //res.writeHead(200, {'Content-Type':'application/json'});
-    db.getWelcomeMessage(appHandle, function (title) {
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        res.end({'title': title});
-    });
+    var title = db.getTitle(appHandle, res);
+    //console.log(title);
+    //res.send('<html><p style="color: red; font-size: 80pt;">' + title + '!</p></html>');
 });
 
 app.get('/uber', function (req, res) {

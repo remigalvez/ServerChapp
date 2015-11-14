@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Server code for ChappStick android app (CS 4237)",
   "main": "index.js",
-  "start":"node app.js",
   "dependencies": {
     "ejs": "^2.3.3",
     "express": "^4.13.3"
