@@ -2,7 +2,7 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 
-var db = require('./parse.js');
+var db = require('./parse');
 
 app.set('port', (process.env.PORT || 5000));
 
