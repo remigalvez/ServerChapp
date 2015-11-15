@@ -2,7 +2,7 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 
-//var db = require('./parse.js');
+var db = require('./parse.js');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -12,9 +12,7 @@ app.get('/', function (req, res) {
 
 app.get('/:id/name', function (req, res) {
     var appHandle = req.params.id;
-    //var title = db.getTitle(appHandle, res);
-    //console.log(title);
-    res.send('<html><p style="color: red; font-size: 80pt;">Remi!</p></html>');
+    var title = db.getTitle(appHandle, res);
 });
 
 app.get('/uber', function (req, res) {
