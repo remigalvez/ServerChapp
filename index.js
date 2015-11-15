@@ -2,9 +2,11 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 
+var db = require(__dirname + '/parse.js');
+
 app.set('port', (process.env.PORT || 5000));
 
-var db = require('./parse.js');
+console.log(__dirname + '/parse.js');
 
 app.get('/', function (req, res) {
     res.send('Remi');
