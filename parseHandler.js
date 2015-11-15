@@ -34,7 +34,7 @@ exports.getTitle = function (appHandle, res) {
 	var app = new Parse.Query('App');
 	app.get(appId, {
 		success: function (title) {
-			res.send(title.get('name'));
+			res.send({"title": title.get('name')});
 		},
 		error: function (e) {
 			res.send('Error...');
