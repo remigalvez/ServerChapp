@@ -41,5 +41,3 @@ exports.getTitle = function (appHandle, res) {
 		}
 	});
 }
-
-module.exports = getTitle;
