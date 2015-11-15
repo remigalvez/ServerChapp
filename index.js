@@ -17,6 +17,11 @@ app.get('/:id/name', function (req, res) {
     var title = db.getTitle(appHandle, res);
 });
 
+app.get('/:id/welcome_message', function (req, res) {
+    var appHandle = req.params.id;
+    var title = db.getTitle(appHandle, res);
+});
+
 app.get('/uber', function (req, res) {
 	var img = fs.readFileSync('./res/UberAppIcon.png');
     res.writeHead(200, {'Content-Type': 'image/png' });
