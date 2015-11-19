@@ -56,7 +56,7 @@ exports.getWelcomeMessage = function (appHandle, res) {
 }
 
 exports.getUserApps = function (userId, res) {
-	var user = new Parse.User(userId);
+	var user = new Parse.User.current();
 	user.get('apps', {
 		success: function (apps) {
 			console.log(apps);
