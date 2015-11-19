@@ -12,14 +12,19 @@ app.get('/', function (req, res) {
     res.send({'name':'Remi'});
 });
 
-app.get('/:id/name', function (req, res) {
-    var appHandle = req.params.id;
-    var title = db.getTitle(appHandle, res);
+app.get('/User/:id/app_list', function (req, res) {
+    var userId = req.params.id;
+    db.getUserApps(userId, res);
 });
 
-app.get('/:id/welcome_message', function (req, res) {
+app.get('/App/:id/name', function (req, res) {
     var appHandle = req.params.id;
-    var title = db.getTitle(appHandle, res);
+    db.getTitle(appHandle, res);
+});
+
+app.get('/App/:id/welcome_message', function (req, res) {
+    var appHandle = req.params.id;
+    var title = db.getWelcomeMessage(appHandle, res);
 });
 
 app.get('/uber', function (req, res) {

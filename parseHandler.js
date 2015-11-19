@@ -41,3 +41,28 @@ exports.getTitle = function (appHandle, res) {
 		}
 	});
 }
+
+exports.getWelcomeMessage = function (appHandle, res) {
+	var appId = idMap[appHandle];
+	var app = new Parse.Query('App');
+	app.get(appId, {
+		success: function (title) {
+			res.send({"title": title.get('welcome_message')});
+		},
+		error: function (e) {
+			res.send('Error...');
+		}
+	});
+}
+
+exports.getUserApps = function (userId, res) {
+	var user = new Parse.User(userId);
+	user.get('apps', {
+		success: function (apps) {
+			console.log(apps);
+		},
+		error: function (e) {
+			res.send('Error...');
+		}
+	})
+}
