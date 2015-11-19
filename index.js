@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
     res.send({'name':'Remi'});
 });
 
-app.get('/User/:id/app_list', function (req, res) {
+app.get('/User/:id/apps', function (req, res) {
     var userId = req.params.id;
     db.getUserApps(userId, res);
 });

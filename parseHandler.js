@@ -56,13 +56,12 @@ exports.getWelcomeMessage = function (appHandle, res) {
 }
 
 exports.getUserApps = function (userId, res) {
-	var user = new Parse.User.current();
-	user.get('apps', {
-		success: function (apps) {
-			console.log(apps);
-		},
-		error: function (e) {
-			res.send('Error...');
+	var query = new Parse.Query(Parse.User);
+	query.equalTo("objectId", userId);  // find all the women
+	query.find({
+		success: function(user) {
+			console.log('Success!');
+			res.send({'apps': user[0].get('apps')});
 		}
-	})
+	});
 }
