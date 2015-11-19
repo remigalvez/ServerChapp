@@ -46,8 +46,8 @@ exports.getWelcomeMessage = function (appHandle, res) {
 	var appId = idMap[appHandle];
 	var app = new Parse.Query('App');
 	app.get(appId, {
-		success: function (title) {
-			res.send({"title": title.get('welcome_message')});
+		success: function (app) {
+			res.send({"welcome_message": app.get('welcome_message')});
 		},
 		error: function (e) {
 			res.send('Error...');
