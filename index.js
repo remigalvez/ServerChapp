@@ -9,7 +9,7 @@ app.set('port', (process.env.PORT || 5000));
 console.log(__dirname + '/parseHandle.js');
 
 app.get('/', function (req, res) {
-    res.send({'name':'Remi'});
+    res.json({name:'Remi'});
 });
 
 app.get('/User/:id/apps', function (req, res) {

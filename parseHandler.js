@@ -34,7 +34,7 @@ exports.getTitle = function (appHandle, res) {
 	var app = new Parse.Query('App');
 	app.get(appId, {
 		success: function (title) {
-			res.send({"title": title.get('name')});
+			res.json({title: title.get('name')});
 		},
 		error: function (e) {
 			res.send('Error...');
@@ -47,7 +47,7 @@ exports.getWelcomeMessage = function (appHandle, res) {
 	var app = new Parse.Query('App');
 	app.get(appId, {
 		success: function (app) {
-			res.send({"welcome_message": app.get('welcome_message')});
+			res.json({welcome_message: app.get('welcome_message')});
 		},
 		error: function (e) {
 			res.send('parseHandler l.53: Error...');
@@ -57,30 +57,16 @@ exports.getWelcomeMessage = function (appHandle, res) {
 
 exports.getUserApps = function (userId, res) {
 	var query = new Parse.Query(Parse.User);
-	query.equalTo("objectId", userId);  // find all the women
+	query.equalTo("objectId", userId);
 	var names = [];
 	query.find({
 		success: function(user) {
-			console.log('Success!');
 			user = user[0];
 			var userAppList = user.get('apps');
-			var app = new Parse.Query('App');
-			var appsJSON = new Object();
-			for (var i = 0; i < userAppList.length; i++) {
-				appsJSON.write('{ \'app_' + i + '\': ' +
-						userAppList[i].get('name') + ' }');
-				console.log(('{ \'app_' + i + '\': ' +
-				userAppList[i].get('name') + ' }');
-			}
-			app.get(userAppList[i], {
-				success: function (a) {
-					res.send(appsJSON);
-				},
-				error: function (e) {
-					console.log('parseHandler l.74: Error...');
-				}
-			});
+			res.json({apps: userAppList});
+		},
+		error: function (e) {
+			res.send('Error...');
 		}
 	});
-	res.send({'apps': names});
 }
