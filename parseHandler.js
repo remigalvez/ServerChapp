@@ -29,18 +29,31 @@ Parse.initialize(APP_ID, JS_KEY, MASTER_KEY);
 //	}
 //});
 
+exports.getApp = function (appId, res) {
+	var app = new Parse.Query('App');
+	app.get(appId, {
+		success: function (app) {
+			JSON.stringify(app);
+			res.json(app);
+		},
+		error: function (e) {
+			res.send('Error getting app (getApp)...')
+		}
+	})
+};
+
 exports.getTitle = function (appHandle, res) {
 	var appId = idMap[appHandle];
 	var app = new Parse.Query('App');
 	app.get(appId, {
-		success: function (title) {
-			res.json({title: title.get('name')});
+		success: function (app) {
+			res.json({title: app.get('name')});
 		},
 		error: function (e) {
-			res.send('Error...');
+			res.send('Error getting title (getTitle)...');
 		}
 	});
-}
+};
 
 exports.getWelcomeMessage = function (appHandle, res) {
 	var appId = idMap[appHandle];
@@ -53,7 +66,7 @@ exports.getWelcomeMessage = function (appHandle, res) {
 			res.send('parseHandler l.53: Error...');
 		}
 	});
-}
+};
 
 exports.getUserApps = function (userId, res) {
 	var query = new Parse.Query(Parse.User);
@@ -66,7 +79,7 @@ exports.getUserApps = function (userId, res) {
 			res.json({apps: userAppList});
 		},
 		error: function (e) {
-			res.send('Error...');
+			res.send('Error get list of user apps (getUserApps)...');
 		}
 	});
-}
+};
