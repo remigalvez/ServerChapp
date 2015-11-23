@@ -42,8 +42,7 @@ exports.getApp = function (appId, res) {
 	})
 };
 
-exports.getTitle = function (appHandle, res) {
-	var appId = idMap[appHandle];
+exports.getTitle = function (appId, res) {
 	var app = new Parse.Query('App');
 	app.get(appId, {
 		success: function (app) {
