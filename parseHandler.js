@@ -54,8 +54,7 @@ exports.getTitle = function (appId, res) {
 	});
 };
 
-exports.getWelcomeMessage = function (appHandle, res) {
-	var appId = idMap[appHandle];
+exports.getWelcomeMessage = function (appId, res) {
 	var app = new Parse.Query('App');
 	app.get(appId, {
 		success: function (app) {
