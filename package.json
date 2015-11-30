@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "ejs": "^2.3.3",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "node-uber": "0.0.6"
   },
   "devDependencies": {},
   "scripts": {
