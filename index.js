@@ -18,7 +18,6 @@ app.get('/User/:id/apps', function (req, res) {
 });
 
 app.get('/App/:id', function (req, res) {
-    console.log('Right here!');
     var appId = req.params.id;
     db.getApp(appId, res);
 });

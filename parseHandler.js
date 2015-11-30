@@ -10,25 +10,6 @@ const MASTER_KEY = 'FzPvwcAIoF8ZaSn5k36vc44C5Erk1kLNPOvhbW5G';
 
 Parse.initialize(APP_ID, JS_KEY, MASTER_KEY);
 
-//var getUser = new Parse.Query(Parse.User);
-//getUser.get('yMqqXTXKsS', {
-//	success: function (user) {
-//		console.log(user.get('apps'));
-//	},
-//	error: function (e) {
-//		console.log(e);
-//	}
-//});
-
-//var getApps = new Parse.Query('App');
-//getApps.find({
-//	success: function (apps) {
-//		for (var i = 0; i < apps.length; i++) {
-//			console.log(apps[i].get('name'));
-//		}
-//	}
-//});
-
 exports.getApp = function (appId, res) {
 	var app = new Parse.Query('App');
 	app.get(appId, {
@@ -40,30 +21,6 @@ exports.getApp = function (appId, res) {
 			res.send('Error getting app (getApp)...')
 		}
 	})
-};
-
-exports.getTitle = function (appId, res) {
-	var app = new Parse.Query('App');
-	app.get(appId, {
-		success: function (app) {
-			res.json({title: app.get('name')});
-		},
-		error: function (e) {
-			res.send('Error getting title (getTitle)...');
-		}
-	});
-};
-
-exports.getWelcomeMessage = function (appId, res) {
-	var app = new Parse.Query('App');
-	app.get(appId, {
-		success: function (app) {
-			res.json({welcome_message: app.get('welcome_message')});
-		},
-		error: function (e) {
-			res.send('parseHandler l.53: Error...');
-		}
-	});
 };
 
 exports.getUserApps = function (userId, res) {
