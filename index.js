@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 
 var uber = require(__dirname + '/apps/UberApp.js');
+var wu = require(__dirname + '/apps/WeatherUndergroundApp.js');
 var db = require(__dirname + '/parseHandler.js');
 
 app.set('port', (process.env.PORT || 5000));
@@ -49,6 +50,11 @@ app.get('/uber', function (req, res) {
     console.log('\n\n');
     uber.getTimes();
 
+});
+
+app.get('/App/tbkbhBPRzB/:id', function (req, res) {
+    zipcode = req.params.id;
+    wu.getForecast(20037, res);
 });
 
 app.listen(app.get('port'), function() {
