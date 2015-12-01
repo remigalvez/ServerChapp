@@ -1,5 +1,0 @@
-
-
-exports.initialRequest = function (loc) {
-
-}

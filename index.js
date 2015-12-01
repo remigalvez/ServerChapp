@@ -2,6 +2,7 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 
+var uber = require(__dirname + '/apps/UberApp.js');
 var db = require(__dirname + '/parseHandler.js');
 
 app.set('port', (process.env.PORT || 5000));
@@ -36,6 +37,18 @@ app.get('/uber', function (req, res) {
 	var img = fs.readFileSync('./res/UberAppIcon.png');
     res.writeHead(200, {'Content-Type': 'image/png' });
     res.end(img, 'binary');
+
+    uber.getProducts();
+
+    console.log('\n\n');
+    uber.getPromotions();
+
+    console.log('\n\n');
+    uber.getPrices();
+
+    console.log('\n\n');
+    uber.getTimes();
+
 });
 
 app.listen(app.get('port'), function() {
