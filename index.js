@@ -54,7 +54,7 @@ app.get('/uber', function (req, res) {
 
 app.get('/App/tbkbhBPRzB/:id', function (req, res) {
     zipcode = req.params.id;
-    wu.getForecast(20037, res);
+    wu.getForecast(zipcode, res);
 });
 
 app.listen(app.get('port'), function() {
