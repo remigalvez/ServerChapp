@@ -40,6 +40,8 @@ computeUrl = function (zipcode) {
     return API_KEY + API_FEATURES + API_SETTINGS + API_CONDITIONS + API_QUERY + zipcode + "/data" + API_OUTPUT_FORMAT;
 }
 
-parseJSON = function ()
+parseJSON = function () {
+    
+}
 
 
