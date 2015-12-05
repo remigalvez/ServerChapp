@@ -8,7 +8,6 @@ const API_CONDITIONS = "conditions" + "/";
 const API_QUERY = "q" + "/";
 const API_OUTPUT_FORMAT = ".json";
 
-
 exports.getForecast = function (zipcode, res) {
     //The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
     var options = {
@@ -27,6 +26,10 @@ exports.getForecast = function (zipcode, res) {
         //the whole response has been recieved, so we just print it out here
         response.on('end', function () {
             res.json(JSON.parse(str));
+
+
+
+
         });
     }
 
@@ -37,6 +40,6 @@ computeUrl = function (zipcode) {
     return API_KEY + API_FEATURES + API_SETTINGS + API_CONDITIONS + API_QUERY + zipcode + "/data" + API_OUTPUT_FORMAT;
 }
 
-
+parseJSON = function ()
 
 
