@@ -34,7 +34,14 @@ constructUrl = function (zipcode) {
 };
 
 constructMessage = function ( days ) {
-    var msg = '';
+    var d = days[0];
+    var msg = 'Today - ' + d.lowF + '°F / ' + d.highC + '°C';
+
+    for (var i = 1; i < days.length; i++) {
+        d = days[i];
+        msg += '\n' + d.dayOfWeek + ' - ' + d.lowF + '°F / ' + d.highC + '°C';
+    }
+
     days.forEach(function (d) {
         msg += d.dayOfWeek + ' - ' + d.lowF + '°F / ' + d.highC + '°C \n';
     });
