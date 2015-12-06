@@ -24,7 +24,11 @@ var displayName;
 var description;
 var promoDisplayText;
 
+var globalResponse;
+
 exports.getProducts = function (lat, lon, requestType, response) {
+
+    globalResponse = response;
 
     uber.products.list({ latitude: lat, longitude: lon }, function (err, res) {
         if (err) console.error(err);
@@ -61,15 +65,20 @@ exports.getProducts = function (lat, lon, requestType, response) {
                 console.log();
                 console.log();
 
-                msg = "TESTING UBER";
-                responseObj = new Object();
-                responseObj.message = msg;
-                response.json(responseObj);
-
             }
+
+            sendMessage();
         }
     });
 
+}
+
+function sendMessage() {
+
+    var msg = "TESTING UBER";
+    var responseObj = new Object();
+    responseObj.message = msg;
+    globalResponse.json(responseObj);
 }
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -126,7 +135,7 @@ exports.getTimesEstimate = function (startLat, startLon, endLat, endLon) {
             console.log("Time Estimate: %j", res);
 
             var timeEstimatesArray = res['products'];
-            var timeEstimate = timeEstimatesArray[0];
+            //var timeEstimate = timeEstimatesArray[0];
 
 
 
