@@ -22,7 +22,9 @@ exports.getForecast = function (zipcode, res) {
                 days.push(day);
             }
             msg = constructMessage(days);
-            res.json(msg);
+            responseObj = new Object();
+            responseObj.message = msg;
+            res.json(responseObj);
         }
     });
 };
