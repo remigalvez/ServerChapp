@@ -23,16 +23,6 @@ app.get('/App/:id', function (req, res) {
     db.getApp(appId, res);
 });
 
-app.get('/App/:id/name', function (req, res) {
-    var appHandle = req.params.id;
-    db.getTitle(appHandle, res);
-});
-
-app.get('/App/:id/welcome_message', function (req, res) {
-    var appHandle = req.params.id;
-    var title = db.getWelcomeMessage(appHandle, res);
-});
-
 app.get('/uber', function (req, res) {
 	var img = fs.readFileSync('./res/UberAppIcon.png');
     res.writeHead(200, {'Content-Type': 'image/png' });
@@ -62,7 +52,10 @@ app.get('/postmates', function (req, res) {
 });
 
 //Uber
-app.get('/App/cYW2QLamZ9/:id'), function (req, res) {
+app.get('/App/cYW2QLamZ9/:id', function (req, res) {
+    var jj = req.params.id;
+
+    console.log('Request received');
 
     var start_latitude = 3.1357;
     var start_longitude = 101.6880;
@@ -70,13 +63,7 @@ app.get('/App/cYW2QLamZ9/:id'), function (req, res) {
     var end_longitude = 101.6500;
 
     uber.getProducts(start_latitude, start_longitude, "price", res);
-}
-
-//PMx
-app.get('/App/3GEwPrgLQr/:id'), function (req, res) {
-
-
-}
+});
 
 //Weather Underground
 app.get('/App/tbkbhBPRzB/:id', function (req, res) {

@@ -24,15 +24,12 @@ var displayName;
 var description;
 var promoDisplayText;
 
-var globalResponse;
-
 exports.getProducts = function (lat, lon, requestType, response) {
 
-    globalResponse = response;
-
     uber.products.list({ latitude: lat, longitude: lon }, function (err, res) {
-        if (err) console.error(err);
-        else {
+        if (err) {
+            console.error(err);
+        } else {
             //console.log("Products: %j", res);
 
             var products = res['products'];
@@ -67,18 +64,23 @@ exports.getProducts = function (lat, lon, requestType, response) {
 
             }
 
-            sendMessage();
+            var msg = "TESTING UBER";
+            var responseObj = new Object();
+            responseObj.message = msg;
+            response.json(responseObj);
+
+            sendMessage(response);
         }
     });
 
 }
 
-function sendMessage() {
+function sendMessage(res) {
 
     var msg = "TESTING UBER";
     var responseObj = new Object();
     responseObj.message = msg;
-    globalResponse.json(responseObj);
+    res.json(responseObj);
 }
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */

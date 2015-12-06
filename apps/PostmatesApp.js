@@ -31,25 +31,6 @@ postmates.quote(delivery, function(err, res) {
 
 });
 
-constructUrl = function (zipcode) {
-    return WU_SEARCH_URL + API_KEY + API_FEATURES + API_SETTINGS + API_CONDITIONS + API_QUERY + zipcode + "/data" + API_OUTPUT_FORMAT;
-};
-
-constructMessage = function ( days ) {
-    var d = days[0];
-    var msg = 'Today - ' + d.lowF + '°F / ' + d.highC + '°C';
-
-    for (var i = 1; i < days.length; i++) {
-        d = days[i];
-        msg += '\n' + d.dayOfWeek + ' - ' + d.lowF + '°F / ' + d.highC + '°C';
-    }
-
-    days.forEach(function (d) {
-        msg += d.dayOfWeek + ' - ' + d.lowF + '°F / ' + d.highC + '°C \n';
-    });
-    return msg;
-};
-
 var delivery = {
     manifest: "a box of kittens",
     pickup_name: "The Warehouse",

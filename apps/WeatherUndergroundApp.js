@@ -17,12 +17,11 @@ exports.getForecast = function (zipcode, res) {
             var forecastArr = data.forecast.simpleforecast.forecastday;
             var days = [];
             for (var i = 0; i < forecastArr.length; i++) {
-                console.log(forecastArr[i].high.fahrenheit);
                 var day = createDayObject(forecastArr[i]);
                 days.push(day);
             }
-            msg = constructMessage(days);
-            responseObj = new Object();
+            var msg = constructMessage(days);
+            var responseObj = new Object();
             responseObj.message = msg;
             res.json(responseObj);
         }
