@@ -9,8 +9,6 @@ var db = require(__dirname + '/parseHandler.js');
 
 app.set('port', (process.env.PORT || 5000));
 
-console.log(__dirname + '/parseHandle.js');
-
 app.get('/', function (req, res) {
     res.json({name:'Remi'});
 });
