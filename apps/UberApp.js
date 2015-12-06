@@ -64,20 +64,16 @@ exports.getProducts = function (lat, lon, requestType, response) {
 
             }
 
-            var msg = "TESTING UBER";
-            var responseObj = new Object();
-            responseObj.message = msg;
-            response.json(responseObj);
+            var msg = ("cost per minute: " + costPerMinute + " | distance unit: " + distanceUnit + " | cost per distance: " + costPerDistance + " | base fee: " + baseFee + " | cancellation fee: " + cancellationFee + " | currency code: " + currencyCode);
+            sendMessage(response, msg);
 
-            sendMessage(response);
         }
     });
 
 }
 
-function sendMessage(res) {
+function sendMessage(res, msg) {
 
-    var msg = "TESTING UBER";
     var responseObj = new Object();
     responseObj.message = msg;
     res.json(responseObj);
