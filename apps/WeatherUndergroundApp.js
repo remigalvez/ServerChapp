@@ -35,7 +35,7 @@ constructUrl = function (zipcode) {
 
 constructMessage = function ( days ) {
     var msg = '';
-    days.forEach(function (d) {;
+    days.forEach(function (d) {
         msg += d.dayOfWeek + ' - ' + d.lowF + '°F / ' + d.highC + '°C \n';
     });
     return msg;
@@ -46,8 +46,8 @@ createDayObject = function ( data ) {
     day.dayOfWeek = data.date.weekday;
     day.highC = data.high.celsius;
     day.lowC = data.low.celsius;
-    data.highF = data.high.fahrenheit;
-    data.lowF = data.low.fahrenheit;
+    day.highF = data.high.fahrenheit;
+    day.lowF = data.low.fahrenheit;
     return day;
 };
 
