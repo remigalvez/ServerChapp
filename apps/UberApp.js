@@ -9,11 +9,6 @@ var uber = new Uber({
     name: 'Chapp Stick'
 });
 
-var msg = constructMessage(days);
-responseObj = new Object();
-responseObj.message = msg;
-res.json(responseObj);
-
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 var priceDetailsArray;
