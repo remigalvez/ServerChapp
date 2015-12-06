@@ -42,9 +42,6 @@ constructMessage = function ( days ) {
         msg += '\n' + d.dayOfWeek + ' - ' + d.lowF + '°F / ' + d.highC + '°C';
     }
 
-    days.forEach(function (d) {
-        msg += d.dayOfWeek + ' - ' + d.lowF + '°F / ' + d.highC + '°C \n';
-    });
     return msg;
 };
 
