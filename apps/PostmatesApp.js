@@ -6,11 +6,6 @@ var delivery = {
     dropoff_address: "101 Market St, San Francisco, CA"
 };
 
-var msg = constructMessage(days);
-responseObj = new Object();
-responseObj.message = msg;
-res.json(responseObj);
-
 postmates.quote(delivery, function(err, res) {
     console.log(JSON.stringify(res.body.fee)); // 799
     console.log("------");
