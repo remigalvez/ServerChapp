@@ -1,4 +1,3 @@
-var http = require('http');
 var request = require('request');
 
 const API_KEY = "api/4ef9ee9668d8686f" + "/";
@@ -18,26 +17,27 @@ exports.getForecast = function (zipcode, res) {
             var forecastArr = data.forecast.simpleforecast.forecastday;
             var days = [];
             for (var i = 0; i < forecastArr.length; i++) {
+                console.log(forecastArr[i].high.fahrenheit);
                 var day = createDayObject(forecastArr[i]);
                 days.push(day);
             }
             msg = constructMessage(days);
-            res.send(msg);
+            res.json(msg);
         }
     });
-}
+};
 
 constructUrl = function (zipcode) {
     return WU_SEARCH_URL + API_KEY + API_FEATURES + API_SETTINGS + API_CONDITIONS + API_QUERY + zipcode + "/data" + API_OUTPUT_FORMAT;
-}
+};
 
 constructMessage = function ( days ) {
     var msg = '';
-    days.forEach(function (d) {
-        msg += d.dayOfWeek + ' - ' + d.highF + '°F / ' + d.highC + '°C \n';
+    days.forEach(function (d) {;
+        msg += d.dayOfWeek + ' - ' + d.lowF + '°F / ' + d.highC + '°C \n';
     });
     return msg;
-}
+};
 
 createDayObject = function ( data ) {
     var day = new Object();
@@ -47,7 +47,7 @@ createDayObject = function ( data ) {
     data.highF = data.high.fahrenheit;
     data.lowF = data.low.fahrenheit;
     return day;
-}
+};
 
 parseJSON = function () {
 
