@@ -61,6 +61,24 @@ app.get('/postmates', function (req, res) {
 
 });
 
+//Uber
+app.get('/App/cYW2QLamZ9/:id'), function (req, res) {
+
+    var start_latitude = 3.1357;
+    var start_longitude = 101.6880;
+    var end_latitude = 3.0833;
+    var end_longitude = 101.6500;
+
+    uber.getProducts(start_latitude, start_longitude, "price", res);
+}
+
+//PM
+app.get('/App/3GEwPrgLQr/:id'), function (req, res) {
+
+
+}
+
+//Weather Underground
 app.get('/App/tbkbhBPRzB/:id', function (req, res) {
     zipcode = req.params.id;
     wu.getForecast(zipcode, res);

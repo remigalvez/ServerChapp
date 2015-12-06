@@ -9,6 +9,11 @@ var uber = new Uber({
     name: 'Chapp Stick'
 });
 
+var msg = constructMessage(days);
+responseObj = new Object();
+responseObj.message = msg;
+res.json(responseObj);
+
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 var priceDetailsArray;
@@ -24,7 +29,7 @@ var displayName;
 var description;
 var promoDisplayText;
 
-exports.getProducts = function (lat, lon, requestType) {
+exports.getProducts = function (lat, lon, requestType, response) {
 
     uber.products.list({ latitude: lat, longitude: lon }, function (err, res) {
         if (err) console.error(err);
@@ -60,6 +65,11 @@ exports.getProducts = function (lat, lon, requestType) {
 
                 console.log();
                 console.log();
+
+                msg = "TESTING UBER";
+                responseObj = new Object();
+                responseObj.message = msg;
+                response.json(responseObj);
 
             }
         }
