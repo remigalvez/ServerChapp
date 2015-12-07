@@ -17,7 +17,7 @@ exports.getHeadlines = function (category, res) {
             var headlines = data.results;
             responseObj.message = headlines[0].title;
             for (var i = 1; i < headlines.length; i++) {
-                responseObj.message += '\n' + htmlToText.fromString(headlines[i].title);
+                responseObj.message += '\n\n' + htmlToText.fromString(headlines[i].title);
             }
             res.json(responseObj);
         } else {
