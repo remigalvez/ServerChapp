@@ -34,9 +34,9 @@ exports.getProducts = function (lat, lon, requestType, response) {
 
             var products = res['products'];
 
-            for (var i=0; i<products.length; i++) {
+            //for (var i=0; i<products.length; i++) {
 
-                var product = products[i];
+                var product = products[0];
                 //console.log(JSON.stringify(product));
 
                 // price
@@ -62,7 +62,7 @@ exports.getProducts = function (lat, lon, requestType, response) {
                 console.log();
                 console.log();
 
-            }
+            //}
 
             var msg = ("cost per minute: " + costPerMinute + " | distance unit: " + distanceUnit + " | cost per distance: " + costPerDistance + " | base fee: " + baseFee + " | cancellation fee: " + cancellationFee + " | currency code: " + currencyCode);
             sendMessage(response, msg);
@@ -81,7 +81,7 @@ function sendMessage(res, msg) {
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-exports.getPromotions = function (startLat, startLon, endLat, endLon) {
+exports.getPromotions = function (startLat, startLon, endLat, endLon, response) {
 
     uber.promotions.list({
         start_latitude: startLat, start_longitude: startLon,
@@ -93,9 +93,11 @@ exports.getPromotions = function (startLat, startLon, endLat, endLon) {
             console.log("Promotions: %j", res);
 
             var promotions = res;
-            promoDisplayText = promotions["display_text"]
+            promoDisplayText = promotions["display_text"];
 
             console.log("Promotion display text: %s", promoDisplayText);
+
+            sendMessage(response, promoDisplayText);
 
             console.log();
             console.log();

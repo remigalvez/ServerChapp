@@ -55,7 +55,8 @@ app.get('/postmates', function (req, res) {
 
 //Uber
 app.get('/App/cYW2QLamZ9/:id', function (req, res) {
-    var jj = req.params.id;
+
+    var id = req.params.id;
 
     console.log('Request received');
 
@@ -64,7 +65,11 @@ app.get('/App/cYW2QLamZ9/:id', function (req, res) {
     var end_latitude = 3.0833;
     var end_longitude = 101.6500;
 
-    uber.getProducts(start_latitude, start_longitude, "price", res);
+    if (id == "1")  //nearby uber info
+        uber.getProducts(start_latitude, start_longitude, "price", res);
+    else if (id == "2") //promotion info
+        uber.getPromotions(start_latitude, start_longitude, end_latitude, end_longitude, res);
+
 });
 
 app.get('/App/kzvm5Pt1JH/:id', function (req, res) {
