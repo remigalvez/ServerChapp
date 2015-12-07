@@ -53,7 +53,7 @@ app.get('/postmates', function (req, res) {
 
 
 });
-
+/*
 // Uber
 app.get('/App/cYW2QLamZ9/:lat/:lon/:id', function (req, res) {
 
@@ -81,7 +81,7 @@ app.get('/App/cYW2QLamZ9/:lat/:lon/:id', function (req, res) {
 
 });
 
-/*
+*/
 app.get('/App/cYW2QLamZ9/:id', function (req, res) {
 
     var id = req.params.id;
@@ -104,7 +104,7 @@ app.get('/App/cYW2QLamZ9/:id', function (req, res) {
     }
 
 });
-*/
+
 
 
 // Postmates
