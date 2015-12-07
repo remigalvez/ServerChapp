@@ -6,6 +6,12 @@ var delivery = {
     dropoff_address: "101 Market St, San Francisco, CA"
 };
 
+exports.parseRequest = function (lat, lon, requestType, response) {
+
+
+
+}
+
 postmates.quote(delivery, function(err, res) {
     console.log(JSON.stringify(res.body.fee)); // 799
     console.log("------");
@@ -17,17 +23,12 @@ postmates.quote(delivery, function(err, res) {
     console.log("------");
 
 
-    var feeFULL = JSON.stringify(res.body.fee);
-    feeFULL = feeFULL.toString();
-    var length = feeFULL.length;
-    var fee = feeFULL.substring(feeFULL.length - 2, feeFULL.length);
-    var feeFULL2 = JSON.stringify(res.body.fee);
-    feeFULL2 = feeFULL.toString();
-    var fee = ("-%s- %s-", feeFULL.substring(0, length - 2), feeFULL2.substring(length - 2, length));
+    var fee = JSON.stringify(res.body.fee);
 
-    console.log("Quote: The delivery will cost $%s", feeFULL);
+    fee = fee/100;
+
+    console.log("Quote: The delivery will cost $" + fee);
     console.log("Quote: The delivery will arrive in approximately %s minutes", res.body.duration);
-
 
 });
 

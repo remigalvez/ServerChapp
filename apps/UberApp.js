@@ -9,7 +9,7 @@ var uber = new Uber({
     name: 'Chapp Stick'
 });
 
-/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 var priceDetailsArray;
 var costPerMinute;
@@ -60,11 +60,10 @@ exports.getProducts = function (lat, lon, requestType, response) {
                 console.log("description: %s", description);
 
                 console.log();
-                console.log();
 
             //}
 
-            var msg = ("Here are the details for the nearest Uber: \n Cost per minute: " + costPerMinute + " | distance unit: " + distanceUnit + " | cost per distance: " + costPerDistance + " | base fee: " + baseFee + " | cancellation fee: " + cancellationFee + " | currency code: " + currencyCode);
+            var msg = ("Here are the details for the nearest Uber: \n Cost per minute: " + costPerMinute + currencyCode + " | cost per distance: " + costPerDistance + " per " + distanceUnit + " | base fee: " + baseFee + currencyCode + " | cancellation fee: " + cancellationFee + currencyCode);
             sendMessage(response, msg);
 
         }
@@ -72,14 +71,7 @@ exports.getProducts = function (lat, lon, requestType, response) {
 
 }
 
-function sendMessage(res, msg) {
-
-    var responseObj = new Object();
-    responseObj.message = msg;
-    res.json(responseObj);
-}
-
-/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 exports.getPromotions = function (startLat, startLon, endLat, endLon, response) {
 
@@ -91,20 +83,19 @@ exports.getPromotions = function (startLat, startLon, endLat, endLon, response) 
         else {
 
             console.log("Promotions: %j", res);
-
             var promotions = res;
             promoDisplayText = promotions["display_text"];
-
             console.log("Promotion display text: %s", promoDisplayText);
 
-            sendMessage(response, "There's a promotion available! Check it out:" + promoDisplayText);
+            sendMessage(response, "There is a promotion available! Check it out:" + promoDisplayText);
 
-            console.log();
             console.log();
         }
     });
 
 }
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 exports.getPricesEstimate = function (startLat, startLon, endLat, endLon) {
 
@@ -117,7 +108,6 @@ exports.getPricesEstimate = function (startLat, startLon, endLat, endLon) {
             console.log("Price Estimate: %j", res);
 
 
-            console.log();
             console.log();
         }
     });
@@ -138,16 +128,18 @@ exports.getTimesEstimate = function (startLat, startLon, endLat, endLon) {
             //var timeEstimate = timeEstimatesArray[0];
 
 
-
-            console.log();
             console.log();
         }
     });
 
 }
 
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
+function sendMessage(res, msg) {
 
-
-
+    var responseObj = new Object();
+    responseObj.message = msg;
+    res.json(responseObj);
+}
 

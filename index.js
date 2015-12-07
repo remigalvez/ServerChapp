@@ -54,7 +54,30 @@ app.get('/postmates', function (req, res) {
 
 });
 
-//Uber
+// Uber
+app.get('/App/cYW2QLamZ9/:lat/:lon/:id', function (req, res) {
+
+    var id = req.params.id;
+
+    console.log('Request received');
+
+    var start_latitude = req.params.lat;
+    var start_longitude = req.params.lon;
+    var end_latitude = 3.0833;
+    var end_longitude = 101.6500;
+
+    if (id == "1")  //nearby uber info
+        uber.getProducts(start_latitude, start_longitude, "price", res);
+    else if (id == "2") //promotion info
+        uber.getPromotions(start_latitude, start_longitude, end_latitude, end_longitude, res);
+    else {
+        var responseObj = new Object();
+        responseObj.message = "That is not a valid message. Please try again.";
+        res.json(responseObj);
+    }
+
+});
+
 app.get('/App/cYW2QLamZ9/:id', function (req, res) {
 
     var id = req.params.id;
@@ -76,6 +99,13 @@ app.get('/App/cYW2QLamZ9/:id', function (req, res) {
         res.json(responseObj);
     }
 
+});
+
+// Postmates
+app.get('/App/3GEwPrgLQr/:id', function (req, res) {
+
+    var id = req.params.id;
+    postmates.par;
 
 });
 
