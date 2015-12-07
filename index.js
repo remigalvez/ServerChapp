@@ -69,6 +69,12 @@ app.get('/App/cYW2QLamZ9/:id', function (req, res) {
         uber.getProducts(start_latitude, start_longitude, "price", res);
     else if (id == "2") //promotion info
         uber.getPromotions(start_latitude, start_longitude, end_latitude, end_longitude, res);
+    else {
+        var responseObj = new Object();
+        responseObj.message = "That is not a valid message. Please try again.";
+        res.json(responseObj);
+    }
+
 
 });
 

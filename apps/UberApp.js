@@ -64,7 +64,7 @@ exports.getProducts = function (lat, lon, requestType, response) {
 
             //}
 
-            var msg = ("cost per minute: " + costPerMinute + " | distance unit: " + distanceUnit + " | cost per distance: " + costPerDistance + " | base fee: " + baseFee + " | cancellation fee: " + cancellationFee + " | currency code: " + currencyCode);
+            var msg = ("Here are the details for the nearest Uber: \n Cost per minute: " + costPerMinute + " | distance unit: " + distanceUnit + " | cost per distance: " + costPerDistance + " | base fee: " + baseFee + " | cancellation fee: " + cancellationFee + " | currency code: " + currencyCode);
             sendMessage(response, msg);
 
         }
@@ -97,7 +97,7 @@ exports.getPromotions = function (startLat, startLon, endLat, endLon, response) 
 
             console.log("Promotion display text: %s", promoDisplayText);
 
-            sendMessage(response, promoDisplayText);
+            sendMessage(response, "There's a promotion available! Check it out:" + promoDisplayText);
 
             console.log();
             console.log();
