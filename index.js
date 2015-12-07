@@ -7,6 +7,7 @@ var wu = require(__dirname + '/apps/WeatherUndergroundApp.js');
 var postmates = require(__dirname + '/apps/PostmatesApp.js');
 var jokebot = require(__dirname + '/apps/JokeBotApp.js');
 var yoMomma = require(__dirname + '/apps/YoMommaApp.js');
+var nyTimes = require(__dirname + '/apps/NYTimesApp.js');
 var db = require(__dirname + '/parseHandler.js');
 
 app.set('port', (process.env.PORT || 5000));
@@ -78,15 +79,23 @@ app.get('/App/cYW2QLamZ9/:id', function (req, res) {
 
 });
 
+// NY Times
+app.get('/App/9XviGieDEL/:id', function (req, res) {
+    var category = req.params.id;
+    nyTimes.getHeadlines(category, res);
+});
+
+// Yo momma joke bot
 app.get('/App/kzvm5Pt1JH/:id', function (req, res) {
     yoMomma.sendRandomJoke(res);
 });
 
+// Chuck Norris joke bot
 app.get('/App/yMUWXNwUja/:id', function (req, res) {
     jokebot.sendRandomJoke(res);
 });
 
-//Weather Underground
+// Weather Underground
 app.get('/App/tbkbhBPRzB/:id', function (req, res) {
     zipcode = req.params.id;
     wu.getForecast(zipcode, res);

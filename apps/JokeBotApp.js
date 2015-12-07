@@ -5,7 +5,7 @@ const QUERY_URL = "http://api.icndb.com/jokes/random/";
 
 exports.sendRandomJoke = function (res) {
 
-    responseObj = new Object();
+    var responseObj = new Object();
 
     request(QUERY_URL, function (err, response, body) {
         if (!err && response.statusCode == 200) {
