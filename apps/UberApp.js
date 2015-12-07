@@ -97,42 +97,46 @@ exports.getPromotions = function (startLat, startLon, endLat, endLon, response) 
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-exports.getPricesEstimate = function (startLat, startLon, endLat, endLon) {
+exports.getTimePriceEstimate = function (startLat, startLon, endLat, endLon, response) {
 
     uber.estimates.price({
         start_latitude: startLat, start_longitude: startLon,
         end_latitude: endLat, end_longitude: endLon
-    }, function (err, res) {
+    }, function (err, priceRes) {
         if (err) console.error(err);
         else {
-            console.log("Price Estimate: %j", res);
-
-
-            console.log();
+            console.log("Price Estimate: " + JSON.stringify(priceRes));
         }
+
+        uber.estimates.time({
+            start_latitude: startLat, start_longitude: startLon,
+            end_latitude: endLat, end_longitude: endLon
+        }, function (err, timeRes) {
+            if (err) console.error(err);
+            else {
+
+                var uberX = priceRes["prices"][0];
+                var priceEstimate =  uberX["estimate"];
+                var duration =  uberX["duration"];
+
+                var time = JSON.stringify(timeRes);
+
+                console.log("Time Estimate: ", time);
+
+                var timeEstimatesArray = timeRes['products'];
+                //var timeEstimate = timeEstimatesArray[0];
+
+                console.log();
+
+                sendMessage(response, "An UberX to the White House will cost approximately " + priceEstimate + " and will take about %.2f minutes.", duration / 60);
+                //sendMessage(response, "We're sending one to you now, courtesy of President Obama. God Bless 'Merica.");
+
+            }
+        });
     });
 
 }
 
-exports.getTimesEstimate = function (startLat, startLon, endLat, endLon) {
-
-    uber.estimates.time({
-        start_latitude: startLat, start_longitude: startLon,
-        end_latitude: endLat, end_longitude: endLon
-    }, function (err, res) {
-        if (err) console.error(err);
-        else {
-            console.log("Time Estimate: %j", res);
-
-            var timeEstimatesArray = res['products'];
-            //var timeEstimate = timeEstimatesArray[0];
-
-
-            console.log();
-        }
-    });
-
-}
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
