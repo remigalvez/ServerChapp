@@ -37,12 +37,7 @@ app.get('/uber', function (req, res) {
     var end_longitude = 101.6500;
 
     uber.getProducts(start_latitude, start_longitude, "price");
-
     uber.getPromotions(start_latitude, start_longitude, end_latitude, end_longitude);
-
-    uber.getPricesEstimate(start_latitude, start_longitude, end_latitude, end_longitude);
-
-    uber.getTimesEstimate(start_latitude, start_longitude, end_latitude, end_longitude);
 
 });
 
@@ -50,7 +45,6 @@ app.get('/postmates', function (req, res) {
     var img = fs.readFileSync('./res/Postmates_logo.png');
     res.writeHead(200, {'Content-Type': 'image/png' });
     res.end(img, 'binary');
-
 
 });
 
@@ -113,10 +107,13 @@ app.get('/App/cYW2QLamZ9/:id', function (req, res) {
 
 
 // Postmates
-app.get('/App/3GEwPrgLQr/:id', function (req, res) {
+app.get('/App/3GEwPrgLQr/:lat/:lon/:id', function (req, res) {
 
     var id = req.params.id;
-    postmates.par;
+    var start_latitude = parseFloat(req.params.lat);
+    var start_longitude = parseFloat(req.params.lon);
+
+    postmates.parseRequest(start_latitude, start_longitude, id, res);
 
 });
 

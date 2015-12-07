@@ -18,27 +18,34 @@ var delivery = {
 
 exports.parseRequest = function (lat, lon, requestType, response) {
 
-    postmates.quote(delivery, function(err, res) {
-        console.log(JSON.stringify(res.body.fee)); // 799
-        console.log("------");
-        console.log(JSON.stringify(res.body));
-        console.log("------");
-        console.log(JSON.stringify(res));
-        console.log("------");
-        console.log(JSON.stringify(res.body.status));
-        console.log("------");
+    if (requestType == "1") {
 
-        var fee = JSON.stringify(res.body.fee);
+        postmates.quote(delivery, function (err, res) {
+            console.log(JSON.stringify(res.body.fee)); // 799
+            console.log("------");
+            console.log(JSON.stringify(res.body));
+            console.log("------");
+            console.log(JSON.stringify(res));
+            console.log("------");
+            console.log(JSON.stringify(res.body.status));
+            console.log("------");
 
-        fee = fee/100;
+            var fee = JSON.stringify(res.body.fee);
 
-        console.log("Quote: The delivery will cost $" + fee);
-        console.log("Quote: The delivery will arrive in approximately %s minutes", res.body.duration);
+            fee = fee / 100;
 
-        var msg = (" The delivery will cost $" + fee + " and will arrive in approximately " + res.body.duration + " minutes");
-        sendMessage(response, msg);
+            console.log("Quote: The delivery will cost $" + fee);
+            console.log("Quote: The delivery will arrive in approximately %s minutes", res.body.duration);
 
-    });
+            var msg = (" The delivery will cost $" + fee + " and will arrive in approximately " + res.body.duration + " minutes");
+            sendMessage(response, msg);
+
+        });
+
+    } else {
+
+        sendMessage(response, "Really? All you had to do was type \"1\"... sigh");
+    }
 
 }
 
