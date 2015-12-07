@@ -5,6 +5,8 @@ var app = express();
 var uber = require(__dirname + '/apps/UberApp.js');
 var wu = require(__dirname + '/apps/WeatherUndergroundApp.js');
 var postmates = require(__dirname + '/apps/PostmatesApp.js');
+var jokebot = require(__dirname + '/apps/JokeBotApp.js');
+var yoMomma = require(__dirname + '/apps/YoMommaApp.js');
 var db = require(__dirname + '/parseHandler.js');
 
 app.set('port', (process.env.PORT || 5000));
@@ -63,6 +65,14 @@ app.get('/App/cYW2QLamZ9/:id', function (req, res) {
     var end_longitude = 101.6500;
 
     uber.getProducts(start_latitude, start_longitude, "price", res);
+});
+
+app.get('/App/kzvm5Pt1JH/:id', function (req, res) {
+    yoMomma.sendRandomJoke(res);
+});
+
+app.get('/App/yMUWXNwUja/:id', function (req, res) {
+    jokebot.sendRandomJoke(res);
 });
 
 //Weather Underground
