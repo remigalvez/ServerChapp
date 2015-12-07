@@ -30,7 +30,7 @@ exports.getProducts = function (lat, lon, requestType, response) {
         if (err) {
             console.error(err);
         } else {
-            //console.log("Products: %j", res);
+            console.log("Products: %j", res);
 
             var products = res['products'];
 
@@ -63,7 +63,7 @@ exports.getProducts = function (lat, lon, requestType, response) {
 
             //}
 
-            var msg = ("Here are the details for the nearest Uber: \n Cost per minute: " + costPerMinute + currencyCode + " | cost per distance: " + costPerDistance + " per " + distanceUnit + " | base fee: " + baseFee + currencyCode + " | cancellation fee: " + cancellationFee + currencyCode);
+            var msg = ("Here are the details for the nearest Uber: Type: " + displayName + " - " + description + " | Cost per minute: " + costPerMinute + currencyCode + " | cost per distance: " + costPerDistance + " per " + distanceUnit + " | base fee: " + baseFee + currencyCode + " | cancellation fee: " + cancellationFee + currencyCode);
             sendMessage(response, msg);
 
         }

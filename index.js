@@ -60,9 +60,12 @@ app.get('/App/cYW2QLamZ9/:lat/:lon/:id', function (req, res) {
     var id = req.params.id;
 
     console.log('Request received');
+    console.log(id);
 
-    var start_latitude = req.params.lat;
-    var start_longitude = req.params.lon;
+    var start_latitude = parseFloat(req.params.lat);
+    console.log(start_latitude);
+
+    var start_longitude = parseFloat(req.params.lon);
     var end_latitude = 3.0833;
     var end_longitude = 101.6500;
 
@@ -78,6 +81,7 @@ app.get('/App/cYW2QLamZ9/:lat/:lon/:id', function (req, res) {
 
 });
 
+/*
 app.get('/App/cYW2QLamZ9/:id', function (req, res) {
 
     var id = req.params.id;
@@ -100,6 +104,8 @@ app.get('/App/cYW2QLamZ9/:id', function (req, res) {
     }
 
 });
+*/
+
 
 // Postmates
 app.get('/App/3GEwPrgLQr/:id', function (req, res) {
