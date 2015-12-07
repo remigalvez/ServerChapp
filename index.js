@@ -69,6 +69,9 @@ app.get('/App/cYW2QLamZ9/:lat/:lon/:id', function (req, res) {
     var end_latitude = 3.0833;
     var end_longitude = 101.6500;
 
+    //start_latitude = 3.1357;
+    //start_longitude = 101.6880;
+
     if (id == "1")  //nearby uber info
         uber.getProducts(start_latitude, start_longitude, "price", res);
     else if (id == "2") //promotion info
