@@ -87,7 +87,7 @@ exports.getPromotions = function (startLat, startLon, endLat, endLon, response) 
             promoDisplayText = promotions["display_text"];
             console.log("Promotion display text: %s", promoDisplayText);
 
-            sendMessage(response, "There is a promotion available! Check it out:" + promoDisplayText);
+            sendMessage(response, "There is a promotion available! Check it out: " + promoDisplayText);
 
             console.log();
         }
@@ -128,7 +128,7 @@ exports.getTimePriceEstimate = function (startLat, startLon, endLat, endLon, res
 
                 console.log();
 
-                sendMessage(response, "An UberX to the White House will cost approximately " + priceEstimate + " and will take about %.2f minutes.", duration / 60);
+                sendMessage(response, "An UberX to the White House will cost approximately " + priceEstimate + " and will take about " + (duration / 60).toFixed(2) + " minutes.");
                 //sendMessage(response, "We're sending one to you now, courtesy of President Obama. God Bless 'Merica.");
 
             }
