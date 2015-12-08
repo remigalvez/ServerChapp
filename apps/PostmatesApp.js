@@ -37,7 +37,7 @@ exports.parseRequest = function (lat, lon, requestType, response) {
             console.log("Quote: The delivery will cost $" + fee);
             console.log("Quote: The delivery will arrive in approximately %s minutes", res.body.duration);
 
-            var msg = (" The delivery will cost $" + fee + " and will arrive in approximately " + res.body.duration + " minutes");
+            var msg = (" The delivery fee in your area is $" + fee + " and if you order now it will arrive in approximately " + res.body.duration + " minutes");
             sendMessage(response, msg);
 
         });
